@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Правила проекта — Блогикум</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'blog:index' %}">Главная</a>
+            <a href="{% url 'pages:about' %}">О проекте</a>
+            <a href="{% url 'pages:rules' %}">Правила</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Правила проекта</h1>
+        <p>
+            1. Уважайте других пользователей и их мнения.
+        </p>
+        <p>
+            2. Запрещено публиковать спам и рекламные материалы.
+        </p>
+        <p>
+            3. За нарушение правил аккаунт может быть заблокирован.
+        </p>
+        <p>
+            4. Модераторы оставляют за собой право удалять неподходящий контент.
+        </p>
+    </main>
+    <footer>
+        <p>Блогикум © 2024</p>
+    </footer>
+</body>
+</html>

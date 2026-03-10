@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>О проекте — Блогикум</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'blog:index' %}">Главная</a>
+            <a href="{% url 'pages:about' %}">О проекте</a>
+            <a href="{% url 'pages:rules' %}">Правила</a>
+        </nav>
+    </header>
+    <main>
+        <h1>О проекте</h1>
+        <p>
+            Блогикум — это платформа для ведения личных дневников и публикации постов.
+            Здесь вы можете делиться своими мыслями, историями и опытом с другими пользователями.
+        </p>
+        <p>
+            Проект создан в рамках обучения Django-разработке.
+        </p>
+    </main>
+    <footer>
+        <p>Блогикум © 2024</p>
+    </footer>
+</body>
+</html>
