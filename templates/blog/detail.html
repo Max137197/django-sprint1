@@ -27,6 +27,18 @@
             color: white;
             border-radius: 4px;
         }
+        .post-meta {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .post-text {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        article a {
+            color: #4a90e2;
+        }
     </style>
 </head>
 <body>
@@ -53,14 +65,12 @@
     <main class="container">
         <article>
             <h1 class="mb-3">{{ post.date }}</h1>
-            <ul class="list-unstyled mb-3">
-                <li>Локация: {{ post.location }}</li>
-                <li>Категория: {{ post.category }}</li>
-            </ul>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <p class="card-text">{{ post.text }}</p>
-                </div>
+            <div class="post-meta">
+                <p class="mb-1">Локация: {{ post.location }}</p>
+                <p class="mb-0">Категория: {{ post.category }}</p>
+            </div>
+            <div class="post-text">
+                <p>{{ post.text }}</p>
             </div>
             <a href="{% url 'blog:index' %}">← На главную</a>
         </article>
