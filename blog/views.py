@@ -45,16 +45,20 @@ posts = [
 
 
 def index(request):
-    context = {'posts': posts}
+    """Главная страница — список всех публикаций в обратном порядке"""
+    # Разворачиваем список в обратном порядке
+    context = {'posts': list(reversed(posts))}
     return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
+    """Страница отдельного поста"""
     post = next((p for p in posts if p['id'] == id), None)
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
+    """Страница категории — выводим только слаг"""
     context = {'category_slug': category_slug}
     return render(request, 'blog/category.html', context)
