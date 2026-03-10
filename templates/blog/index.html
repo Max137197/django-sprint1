@@ -27,6 +27,11 @@
             color: white;
             border-radius: 4px;
         }
+        .page-title {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
         article {
             margin-bottom: 2rem;
             padding-bottom: 2rem;
@@ -70,7 +75,7 @@
     </header>
     
     <main class="container">
-        <h1 class="mb-5">Лента записей</h1>
+        <h1 class="page-title">Лента записей</h1>
         
         {% for post in posts %}
         <article>
