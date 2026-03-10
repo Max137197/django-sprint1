@@ -7,8 +7,16 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="{% url 'blog:index' %}">Лента записей</a>
+        </nav>
+    </header>
     <main>
         <h1>Публикации в категории {{ category_slug }}</h1>
     </main>
+    <footer>
+        <p>© Блогикум</p>
+    </footer>
 </body>
 </html>

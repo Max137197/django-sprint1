@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-# Список постов (как в задании)
 posts = [
     {
         'id': 0,
@@ -46,19 +45,16 @@ posts = [
 
 
 def index(request):
-    """Главная страница — список всех публикаций"""
     context = {'posts': posts}
     return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
-    """Страница отдельного поста"""
     post = next((p for p in posts if p['id'] == id), None)
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
-    """Страница категории — выводим только слаг"""
     context = {'category_slug': category_slug}
     return render(request, 'blog/category.html', context)

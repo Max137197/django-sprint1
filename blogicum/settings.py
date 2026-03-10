@@ -83,7 +83,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# === НОВАЯ НАСТРОЙКА ===
 STATICFILES_DIRS = [
     BASE_DIR / 'html',
 ]
