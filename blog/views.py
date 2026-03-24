@@ -4,7 +4,7 @@ from django.http import Http404
 from django.shortcuts import render
 
 # Список постов для отображения на главной странице (в обратном порядке)
-POSTS: List[Dict[str, Any]] = [
+posts: List[Dict[str, Any]] = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -22,7 +22,7 @@ POSTS: List[Dict[str, Any]] = [
         'location': 'Остров отчаянья',
         'date': '1 октября 1659 года',
         'category': 'not-my-day',
-        'text': '''Проснувшись поутру, я увидел, что наш корабль сняло
+        'text': '''Проснувшись поутру, я увидел, что наш корабль снято
                 с мели приливом и пригнало гораздо ближе к берегу.
                 Это подало мне надежду, что, когда ветер стихнет,
                 мне удастся добраться до корабля и запастись едой и
@@ -48,19 +48,19 @@ POSTS: List[Dict[str, Any]] = [
 ]
 
 # Словарь для быстрого доступа к постам по id (dict comprehension)
-POSTS_BY_ID: Dict[int, Dict[str, Any]] = {post['id']: post for post in POSTS}
+posts_by_id: Dict[int, Dict[str, Any]] = {post['id']: post for post in posts}
 
 
 def index(request):
     """Главная страница — список всех публикаций в обратном порядке"""
-    context = {'posts': list(reversed(POSTS))}
+    context = {'posts': list(reversed(posts))}
     return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, post_id):
     """Страница отдельного поста"""
     try:
-        post = POSTS_BY_ID[post_id]
+        post = posts_by_id[post_id]
     except KeyError:
         raise Http404(f'Пост с id {post_id} не найден')
     context = {'post': post}
