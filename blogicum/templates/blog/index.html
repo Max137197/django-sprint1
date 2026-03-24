@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Блогикум — дневники, блоги, истории</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .header {
+            background-color: #7eb3e8;
+            padding: 0.75rem 0;
+            margin-bottom: 2rem;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: normal;
+            color: #333;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        .nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 5rem;
+        }
+        .nav-link {
+            color: #555;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .nav-link.active {
+            background-color: #2174d4;
+            color: white;
+        }
+        .nav-link:hover {
+            color: #1a73e8;
+        }
+        .page-title {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        article {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        article:last-child {
+            border-bottom: none;
+        }
+        article ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        article ul li {
+            margin-bottom: 0.25rem;
+        }
+        article a {
+            color: #4a90e2;
+        }
+    </style>
+</head>
+<body>
+    {% include 'includes/header.html' %}
+    
+    <main class="container">
+        <h1 class="page-title">Лента записей</h1>
+        
+        {% for post in posts %}
+            {% include "includes/post_preview.html" %}
+        {% endfor %}
+    </main>
+    
+    {% include 'includes/footer.html' %}
+</body>
+</html>
