@@ -54,19 +54,7 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <a class="navbar-brand" href="{% url 'blog:index' %}">
-                <img src="{% static 'img/logo.png' %}" alt="Логотип" width="30" height="30">
-                Блогикум
-            </a>
-            <nav class="nav">
-                <a class="nav-link" href="{% url 'blog:index' %}">Лента записей</a>
-                <a class="nav-link active" href="{% url 'pages:about' %}">О проекте</a>
-                <a class="nav-link" href="{% url 'pages:rules' %}">Наши правила</a>
-            </nav>
-        </div>
-    </header>
+    {% include 'includes/header.html' %}
     
     <main class="container">
         <h1 class="mb-4">О проекте</h1>
@@ -75,8 +63,6 @@
         </div>
     </main>
     
-    <footer class="container py-3 border-top">
-        <p class="text-center mb-0">© Блогикум</p>
-    </footer>
+    {% include 'includes/footer.html' %}
 </body>
 </html>
