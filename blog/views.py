@@ -1,6 +1,10 @@
+from typing import Dict, List, Any
+
+from django.http import Http404
 from django.shortcuts import render
 
-posts = [
+# Список постов для отображения на главной странице (в обратном порядке)
+POSTS: List[Dict[str, Any]] = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -43,16 +47,22 @@ posts = [
     },
 ]
 
+# Словарь для быстрого доступа к постам по id (dict comprehension)
+POSTS_BY_ID: Dict[int, Dict[str, Any]] = {post['id']: post for post in POSTS}
+
 
 def index(request):
     """Главная страница — список всех публикаций в обратном порядке"""
-    context = {'posts': list(reversed(posts))}
+    context = {'posts': list(reversed(POSTS))}
     return render(request, 'blog/index.html', context)
 
 
-def post_detail(request, id):
+def post_detail(request, post_id):
     """Страница отдельного поста"""
-    post = next((p for p in posts if p['id'] == id), None)
+    try:
+        post = POSTS_BY_ID[post_id]
+    except KeyError:
+        raise Http404(f'Пост с id {post_id} не найден')
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
 
