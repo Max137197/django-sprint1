@@ -57,12 +57,12 @@ def index(request):
     return render(request, 'blog/index.html', context)
 
 
-def post_detail(request, post_id):
+def post_detail(request, id):
     """Страница отдельного поста"""
     try:
-        post = posts_by_id[post_id]
+        post = posts_by_id[id]
     except KeyError:
-        raise Http404(f'Пост с id {post_id} не найден')
+        raise Http404(f'Пост с id {id} не найден')
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
 
