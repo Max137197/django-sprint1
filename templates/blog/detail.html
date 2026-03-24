@@ -52,6 +52,14 @@
             padding-bottom: 1rem;
             border-bottom: 1px solid #e0e0e0;
         }
+        .post-meta p {
+            display: inline-block;
+        }
+        .post-meta p:not(:last-child)::after {
+            content: " • ";
+            color: #999;
+            margin: 0 0.5rem;
+        }
         .post-text {
             margin-bottom: 2rem;
             line-height: 1.8;
@@ -65,17 +73,8 @@
     {% include 'includes/header.html' %}
     
     <main class="container">
-        <article>
-            <h1 class="mb-3">{{ post.date }}</h1>
-            <div class="post-meta">
-                <p class="mb-1">Локация: {{ post.location }}</p>
-                <p class="mb-0">Категория: {{ post.category }}</p>
-            </div>
-            <div class="post-text">
-                <p>{{ post.text }}</p>
-            </div>
-            <a href="{% url 'blog:index' %}">← На главную</a>
-        </article>
+        {% include 'includes/post.html' %}
+        <a href="{% url 'blog:index' %}">← На главную</a>
     </main>
     
     {% include 'includes/footer.html' %}

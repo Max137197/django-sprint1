@@ -1,0 +1,10 @@
+<article>
+    <h1 class="mb-3">{{ post.date }}</h1>
+    <div class="post-meta">
+        <p class="mb-1">Локация: {{ post.location }}</p>
+        <p class="mb-0">Категория: {{ post.category }}</p>
+    </div>
+    <div class="post-text">
+        <p>{{ post.text|linebreaks }}</p>
+    </div>
+</article>
