@@ -2,10 +2,17 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from pathlib import Path
 
 
 def main():
     """Run administrative tasks."""
+    # Добавляем папку blogicum в путь, чтобы Django нашёл settings
+    project_root = Path(__file__).resolve().parent
+    blogicum_dir = project_root / 'blogicum'
+    if str(blogicum_dir) not in sys.path:
+        sys.path.insert(0, str(blogicum_dir))
+    
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blogicum.settings')
     try:
         from django.core.management import execute_from_command_line
