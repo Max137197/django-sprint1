@@ -3,10 +3,8 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{% static 'img/fav/fav.ico' %}" type="image">
     <title>{% block title %}Блогикум{% endblock %}</title>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <style>
         .header {
             background-color: #7eb3e8;
@@ -49,6 +47,30 @@
         .nav-link:hover {
             color: #1a73e8;
         }
+        .page-title {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        article {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        article:last-child {
+            border-bottom: none;
+        }
+        article ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        article ul li {
+            margin-bottom: 0.25rem;
+        }
+        article a {
+            color: #4a90e2;
+        }
         .post-meta {
             margin-bottom: 2rem;
             padding-bottom: 1rem;
@@ -66,8 +88,9 @@
             margin-bottom: 2rem;
             line-height: 1.8;
         }
-        article a {
-            color: #4a90e2;
+        .category-title {
+            text-align: center;
+            margin-bottom: 2rem;
         }
         .content-text {
             margin-bottom: 2rem;
@@ -80,6 +103,7 @@
             margin-bottom: 0.75rem;
         }
     </style>
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     {% include 'includes/header.html' %}
@@ -89,5 +113,7 @@
     </main>
     
     {% include 'includes/footer.html' %}
+    
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
