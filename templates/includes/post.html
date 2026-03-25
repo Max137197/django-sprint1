@@ -1,8 +1,13 @@
 <article>
-    <h1 class="mb-3">{{ post.date }}</h1>
+    <h1 class="mb-3">{{ post.pub_date|date:"d E Y" }}</h1>
     <div class="post-meta">
         <p class="mb-1">Локация: {{ post.location }}</p>
-        <p class="mb-0">Категория: {{ post.category }}</p>
+        <p class="mb-0">
+            Категория: 
+            <a href="{% url 'blog:category_posts' post.category.slug %}">
+                {{ post.category }}
+            </a>
+        </p>
     </div>
     <div class="post-text">
         <p>{{ post.text|linebreaks }}</p>

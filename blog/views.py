@@ -4,6 +4,7 @@ from django.http import Http404
 from django.shortcuts import render
 
 # Список постов для отображения на главной странице (в обратном порядке)
+# Тесты импортируют эту переменную, поэтому имя должно быть 'posts'
 posts: List[Dict[str, Any]] = [
     {
         'id': 0,
@@ -47,6 +48,10 @@ posts: List[Dict[str, Any]] = [
     },
 ]
 
+# Словарь для быстрого доступа к постам по id (dict comprehension)
+# Ключ: id поста, Значение: данные поста
+posts_by_id: Dict[int, Dict[str, Any]] = {post['id']: post for post in posts}
+
 
 def index(request):
     """Главная страница — список всех публикаций в обратном порядке"""
@@ -56,9 +61,11 @@ def index(request):
 
 def post_detail(request, id):
     """Страница отдельного поста"""
+    # Используем словарь для доступа — не опираемся на индекс в списке
     try:
-        post = posts[id]
-    except (KeyError, IndexError):
+        post = posts_by_id[id]
+    except KeyError:
+        # Ловим только KeyError, так как posts_by_id — это словарь
         raise Http404(f'Пост с id {id} не найден')
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
