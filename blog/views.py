@@ -48,8 +48,7 @@ posts: List[Dict[str, Any]] = [
     },
 ]
 
-# Словарь для быстрого доступа к постам по id (dict comprehension)
-# Ключ: id поста, Значение: данные поста
+# Словарь для быстрого доступа к постам по id
 posts_by_id: Dict[int, Dict[str, Any]] = {post['id']: post for post in posts}
 
 
@@ -61,11 +60,9 @@ def index(request):
 
 def post_detail(request, id):
     """Страница отдельного поста"""
-    # Используем словарь для доступа — не опираемся на индекс в списке
     try:
         post = posts_by_id[id]
     except KeyError:
-        # Ловим только KeyError, так как posts_by_id — это словарь
         raise Http404(f'Пост с id {id} не найден')
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
